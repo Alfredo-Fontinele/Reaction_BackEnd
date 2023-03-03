@@ -3,7 +3,8 @@ import { Entity } from "../../core/domain/Entity";
 export interface ICommentProps {
     description: string;
     new_id: string;
-    created_at: Date;
+    created_at?: Date;
+    comments?: ICommentProps[];
 }
 
 export class Comment extends Entity<ICommentProps> {
@@ -11,6 +12,12 @@ export class Comment extends Entity<ICommentProps> {
         super(props, id);
     }
     static create(props: ICommentProps, id?: string) {
-        return new Comment(props, id);
+        return new Comment(
+            {
+                ...props,
+                created_at: props.created_at ?? new Date(),
+            },
+            id
+        );
     }
 }

@@ -1,0 +1,13 @@
+version: "3"
+
+services:
+    db_reaction_news:
+        image: postgres
+        restart: always
+        container_name: api-reaction-news
+        environment:
+            - POSTGRESQL_PASSWORD=1234
+        ports:
+            - 5432:5432
+        volumes:
+            - .docker/dbdata:/var/lib/postgresql/data

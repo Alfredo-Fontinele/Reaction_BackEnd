@@ -3,8 +3,9 @@ import { InMemoryCreateNewRepository } from "../../../tests/repositories/in-memo
 import { CreateNewSubmission } from "./CreateNewSubmission";
 import { User } from "../../../domain/entities/User";
 import { New } from "../../../domain/entities/New";
+import { dateNow } from "../../../utils/dateNow";
 
-describe("Create New Submission | use case", () => {
+describe("Use Case | Create New Submission", () => {
     it("Should be able to create a new submission ", async () => {
         const userRepositoryInMemory = new InMemoryCreateUserRepository();
         const newRepositoryInMemory = new InMemoryCreateNewRepository();
@@ -13,8 +14,6 @@ describe("Create New Submission | use case", () => {
             newRepositoryInMemory,
             userRepositoryInMemory
         );
-
-        const dateNow = new Date();
 
         const newUser = User.create({
             name: "Galileu",
@@ -40,7 +39,10 @@ describe("Create New Submission | use case", () => {
             userId: newUser.id,
         });
 
-        const responseStatistic = await console.log(response);
+        // console.group("Response");
+        // console.log(response);
+        // console.groupEnd();
+
         expect(response).toBeTruthy();
     });
 });

@@ -2,10 +2,10 @@ import { Submission } from "../../../domain/entities/Submission";
 import { INewRepository } from "../../repositories/NewRepository";
 import { IUserRepository } from "../../repositories/UserRepository";
 
-type CreateNewStatisticRequest = {
+interface CreateNewStatisticRequest {
     newId: string;
     userId: string;
-};
+}
 
 export class CreateNewSubmission {
     constructor(

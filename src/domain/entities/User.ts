@@ -1,6 +1,6 @@
 import { IDate } from "../../application/interfaces";
 import { Entity } from "../../core/domain/Entity";
-import { dateNow } from "../../utils/dataNow";
+import { dateNow } from "../../utils/dateNow";
 
 export interface IUserProps extends IDate {
     name: string;
