@@ -3,8 +3,8 @@ import { Comment, ICommentProps } from "./Comment";
 import { INewProps, New } from "./New";
 
 interface ILikeOrUnlike {
-    news: New[];
-    comments: Comment[];
+    news?: New[];
+    comments?: Comment[];
 }
 
 interface IStatistic {

@@ -9,6 +9,10 @@ export interface IUserProps extends IDate {
     password: string;
 }
 
+// comments []
+// likes []
+// favorites []
+
 export class User extends Entity<IUserProps> {
     private constructor(props: IUserProps, id?: string) {
         super(props, id);

@@ -1,6 +1,6 @@
 import { InMemoryCreateUserRepository } from "../../../tests/repositories/in-memory-create-user-repository";
 import { InMemoryCreateNewRepository } from "../../../tests/repositories/in-memory-create-new-repository";
-import { CreateNewUserStatistic } from "./CreateNewUser";
+import { CreateNewUserStatistic } from "./CreateFavoriteNew";
 import { User } from "../../../domain/entities/User";
 import { New } from "../../../domain/entities/New";
 
@@ -35,7 +35,7 @@ describe("Use Case | Create New User Statistic", () => {
             userId: newUser.id,
         });
 
-        console.group("Response");
+        console.group("Create Favorite New");
         console.dir(response, { depth: null });
         console.groupEnd();
 

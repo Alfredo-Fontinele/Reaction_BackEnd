@@ -48,7 +48,7 @@ describe("Use Case | Create Comment in Comment", () => {
             commentId: newComment.id,
         });
 
-        console.group("Response");
+        console.group("Create Comment In Comment");
         console.dir(response, { depth: null });
         console.groupEnd();
 

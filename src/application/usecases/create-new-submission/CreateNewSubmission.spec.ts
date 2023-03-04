@@ -39,7 +39,7 @@ describe("Use Case | Create New Submission", () => {
             userId: newUser.id,
         });
 
-        console.group("Response");
+        console.group("Create New Submission");
         console.dir(response, { depth: null });
         console.groupEnd();
 
