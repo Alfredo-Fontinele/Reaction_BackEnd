@@ -39,9 +39,9 @@ describe("Use Case | Create New Submission", () => {
             userId: newUser.id,
         });
 
-        // console.group("Response");
-        // console.log(response);
-        // console.groupEnd();
+        console.group("Response");
+        console.dir(response, { depth: null });
+        console.groupEnd();
 
         expect(response).toBeTruthy();
     });

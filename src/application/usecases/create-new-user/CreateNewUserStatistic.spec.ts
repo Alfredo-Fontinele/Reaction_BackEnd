@@ -35,13 +35,9 @@ describe("Use Case | Create New User Statistic", () => {
             userId: newUser.id,
         });
 
-        // console.group("Favorites");
-        // console.log(newNew);
-        // console.groupEnd();
-
-        // console.group("Response");
-        // console.log(response);
-        // console.groupEnd();
+        console.group("Response");
+        console.dir(response, { depth: null });
+        console.groupEnd();
 
         expect(response).toBeTruthy();
     });

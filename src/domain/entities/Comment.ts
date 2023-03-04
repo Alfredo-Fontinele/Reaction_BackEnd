@@ -4,7 +4,7 @@ export interface ICommentProps {
     description: string;
     new_id: string;
     created_at?: Date;
-    comments?: ICommentProps[];
+    comments?: Comment[];
 }
 
 export class Comment extends Entity<ICommentProps> {
@@ -16,6 +16,7 @@ export class Comment extends Entity<ICommentProps> {
             {
                 ...props,
                 created_at: props.created_at ?? new Date(),
+                comments: props.comments ?? [],
             },
             id
         );

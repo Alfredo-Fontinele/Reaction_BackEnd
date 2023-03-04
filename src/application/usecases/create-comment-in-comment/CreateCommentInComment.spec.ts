@@ -1,4 +1,5 @@
 import { Comment } from "../../../domain/entities/Comment";
+import { New } from "../../../domain/entities/New";
 import { User } from "../../../domain/entities/User";
 import { InMemoryCreateCommentRepository } from "../../../tests/repositories/in-memory-create-comment-repository";
 import { InMemoryCreateUserRepository } from "../../../tests/repositories/in-memory-create-user-repository";
@@ -21,25 +22,34 @@ describe("Use Case | Create Comment in Comment", () => {
             password: "@asd54",
         });
 
+        const newNew = New.create({
+            author: "Folha",
+            description: "Noticia Nova",
+            title: "Futebol",
+        });
+
         const newComment = Comment.create({
-            new_id: newUser.id,
+            new_id: newNew.id,
             description: "Muito Bom!",
+        });
+
+        const otherComment = Comment.create({
+            new_id: newNew.id,
+            description: "Muito Bom Mesmo cara!",
         });
 
         userRepository.users.push(newUser);
         commentRepository.comments.push(newComment);
+        commentRepository.comments.push(otherComment);
 
         const response = await createCommmentInComment.execute({
-            user_id: newUser.id,
-            comment_id: newComment.id,
+            userId: newUser.id,
+            otherCommentId: otherComment.id,
+            commentId: newComment.id,
         });
 
-        console.group("Properties Comments");
-        console.log(response.props);
-        console.groupEnd();
-
         console.group("Response");
-        console.log(response);
+        console.dir(response, { depth: null });
         console.groupEnd();
 
         expect(response).toBeTruthy();

@@ -24,9 +24,7 @@ export class CreateNewUserStatistic {
         return Statistic.create(
             {
                 userId: userFound.id,
-                favorites: [{ ...newFound.props }],
-                comments: [],
-                likes: [],
+                favorites: [newFound],
             },
             userId
         );

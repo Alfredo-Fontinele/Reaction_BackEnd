@@ -3,8 +3,9 @@ import { ICommentRepository } from "../../repositories/CommentRepository";
 import { IUserRepository } from "../../repositories/UserRepository";
 
 interface ICreateCommentInCommentRequest {
-    comment_id: string;
-    user_id: string;
+    commentId: string;
+    otherCommentId: string;
+    userId: string;
 }
 
 export class CreateCommentInComment {
@@ -12,23 +13,29 @@ export class CreateCommentInComment {
         private commentRepository: ICommentRepository,
         private userRepository: IUserRepository
     ) {}
-    async execute({ user_id, comment_id }: ICreateCommentInCommentRequest) {
-        const existUser = await this.userRepository.findById(user_id);
+    async execute({
+        userId,
+        commentId,
+        otherCommentId,
+    }: ICreateCommentInCommentRequest) {
+        const existUser = await this.userRepository.findById(userId);
         if (!existUser) {
             throw new Error("User Not Found!");
         }
-        const existComment = await this.commentRepository.findById(comment_id);
+        const existComment = await this.commentRepository.findById(commentId);
         if (!existComment) {
             throw new Error("Comment Not Exist!");
         }
+        const existOtherComment = await this.commentRepository.findById(
+            otherCommentId
+        );
+        if (!existOtherComment) {
+            throw new Error("Other Comment Not Exist!");
+        }
+        existComment.props.comments?.push(existOtherComment);
         return Statistic.create({
             userId: existUser.id,
-            comments: [
-                {
-                    ...existComment.props,
-                    comments: existComment.props.comments,
-                },
-            ],
+            comments: [existComment, existOtherComment],
         });
     }
 }

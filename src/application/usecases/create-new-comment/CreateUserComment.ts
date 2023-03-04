@@ -23,9 +23,7 @@ export class CreateUserComment {
         }
         return Statistic.create({
             userId: existUser.id,
-            comments: [{ ...existComment.props }],
-            favorites: [],
-            likes: [],
+            comments: [existComment],
         });
     }
 }

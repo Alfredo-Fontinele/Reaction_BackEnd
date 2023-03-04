@@ -34,13 +34,9 @@ describe("Use Case | Create User Comment", () => {
             commentId: newComment.id,
         });
 
-        // console.group("Properties");
-        // console.log(response.props);
-        // console.groupEnd();
-
-        // console.group("Response");
-        // console.info(response);
-        // console.groupEnd();
+        console.group("Response");
+        console.dir(response, { depth: null });
+        console.groupEnd();
 
         expect(response).toBeTruthy();
     });
