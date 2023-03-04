@@ -1,12 +1,14 @@
-version: "3"
+version: "3.8"
 
 services:
-    db_reaction_news:
-        image: postgres
+    db:
+        image: postgres:14-alpine
         restart: always
         container_name: api-reaction-news
         environment:
+            - POSTGRES_USER=neto
             - POSTGRESQL_PASSWORD=1234
+            - POSTGRES_DB=db_reaction_news
         ports:
             - 5432:5432
         volumes:

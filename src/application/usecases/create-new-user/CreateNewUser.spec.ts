@@ -1,6 +1,6 @@
 import { InMemoryCreateUserRepository } from "../../../tests/repositories/in-memory-create-user-repository";
 import { InMemoryCreateNewRepository } from "../../../tests/repositories/in-memory-create-new-repository";
-import { CreateNewUserStatistic } from "./CreateNewUserStatistic";
+import { CreateNewUserStatistic } from "./CreateNewUser";
 import { User } from "../../../domain/entities/User";
 import { New } from "../../../domain/entities/New";
 
