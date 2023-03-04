@@ -1,6 +1,6 @@
-import { Statistic } from "../../../domain/entities/Statistic";
 import { ICommentRepository } from "../../repositories/CommentRepository";
 import { IUserRepository } from "../../repositories/UserRepository";
+import { Statistic } from "../../../domain/entities/Statistic";
 
 interface ICreateCommentInCommentRequest {
     commentId: string;
