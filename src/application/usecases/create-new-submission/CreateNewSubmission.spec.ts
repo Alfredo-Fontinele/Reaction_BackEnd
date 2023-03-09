@@ -4,6 +4,7 @@ import { CreateNewSubmission } from "./CreateNewSubmission";
 import { User } from "../../../domain/entities/User";
 import { New } from "../../../domain/entities/New";
 import { dateNow } from "../../../utils/dateNow";
+import { consoleResponse } from "../../../utils/consoleResponse";
 
 describe("Use Case | Create New Submission", () => {
     it("Should be able to create a new submission ", async () => {
@@ -39,9 +40,10 @@ describe("Use Case | Create New Submission", () => {
             userId: newUser.id,
         });
 
-        console.group("Create New Submission");
-        console.dir(response, { depth: null });
-        console.groupEnd();
+        consoleResponse({
+            text: "Create New Submission",
+            response,
+        });
 
         expect(response).toBeTruthy();
     });

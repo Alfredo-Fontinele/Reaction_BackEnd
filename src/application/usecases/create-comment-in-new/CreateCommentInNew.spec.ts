@@ -4,6 +4,7 @@ import { CreateCommentInNew } from "./CreateCommentInNew";
 import { User } from "../../../domain/entities/User";
 import { Comment } from "../../../domain/entities/Comment";
 import { New } from "../../../domain/entities/New";
+import { consoleResponse } from "../../../utils/consoleResponse";
 
 describe("Use Case | Create User Comment", () => {
     it("Should be able to create user comment", async () => {
@@ -41,9 +42,10 @@ describe("Use Case | Create User Comment", () => {
             commentId: newComment.id,
         });
 
-        console.group("Create Comment In New");
-        console.dir(response, { depth: null });
-        console.groupEnd();
+        consoleResponse({
+            text: "Create Comment In New",
+            response,
+        });
 
         expect(response).toBeTruthy();
     });

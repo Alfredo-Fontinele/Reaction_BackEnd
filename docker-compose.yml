@@ -1,15 +1,43 @@
-version: "3.8"
+version: "3"
 
 services:
     db:
-        image: postgres:14-alpine
+        image: postgres
         restart: always
-        container_name: api_db_reaction_news
+        container_name: db
         environment:
-            - POSTGRES_USER=neto
-            - POSTGRESQL_PASSWORD=1234
-            - POSTGRES_DB=db_reaction_news
+            POSTGRES_USER: neto
+            POSTGRES_PASSWORD: 1234
+            POSTGRES_DB: db_reaction_news
         ports:
-            - 5432:5432
+            - "5432:5432"
         volumes:
-            - .docker/dbdata:/var/lib/postgresql/data
+            - db_data:/var/lib/postgresql/data
+
+    prisma:
+        image: prismagraphql/prisma:1.34.9-gatsby
+        restart: always
+        ports:
+            - "4466:4466"
+        container_name: prisma
+        environment:
+            PRISMA_CONFIG: |
+                port: 4466
+                databases:
+                  default:
+                    connector: postgres
+                    host: db
+                    port: 5432
+                    user: neto
+                    password: 1234
+                    database: db_reaction_news
+                    schema: public
+                service:
+                  api:
+                    port: 80
+        volumes:
+            - prisma_data:/prisma
+
+volumes:
+    db_data:
+    prisma_data:

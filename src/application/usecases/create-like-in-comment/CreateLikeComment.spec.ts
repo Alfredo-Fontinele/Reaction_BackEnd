@@ -5,6 +5,7 @@ import { User } from "../../../domain/entities/User";
 import { Comment } from "../../../domain/entities/Comment";
 import { New } from "../../../domain/entities/New";
 import { InMemoryCreateNewRepository } from "../../../tests/repositories/in-memory-create-new-repository";
+import { consoleResponse } from "../../../utils/consoleResponse";
 
 describe("Use Case | Create Like Comment", () => {
     it("Should be able to create like in one comment", async () => {
@@ -44,9 +45,10 @@ describe("Use Case | Create Like Comment", () => {
             userId: newUser.id,
         });
 
-        console.group("Create Like In Comment");
-        console.dir(response, { depth: null });
-        console.groupEnd();
+        consoleResponse({
+            text: "Create Like In Comment",
+            response,
+        });
 
         expect(response).toBeTruthy();
     });

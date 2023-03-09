@@ -1,9 +1,10 @@
-import { Comment } from "../../../domain/entities/Comment";
-import { New } from "../../../domain/entities/New";
-import { User } from "../../../domain/entities/User";
 import { InMemoryCreateCommentRepository } from "../../../tests/repositories/in-memory-create-comment-repository";
 import { InMemoryCreateUserRepository } from "../../../tests/repositories/in-memory-create-user-repository";
+import { consoleResponse } from "./../../../utils/consoleResponse";
 import { CreateCommentInComment } from "./CreateCommentInComment";
+import { Comment } from "../../../domain/entities/Comment";
+import { User } from "../../../domain/entities/User";
+import { New } from "../../../domain/entities/New";
 
 describe("Use Case | Create Comment in Comment", () => {
     it("Should be able to create a comment in a comment", async () => {
@@ -48,9 +49,10 @@ describe("Use Case | Create Comment in Comment", () => {
             commentId: newComment.id,
         });
 
-        console.group("Create Comment In Comment");
-        console.dir(response, { depth: null });
-        console.groupEnd();
+        consoleResponse({
+            text: "Create Comment In Comment",
+            response,
+        });
 
         expect(response).toBeTruthy();
     });

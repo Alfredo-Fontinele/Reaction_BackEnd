@@ -1,8 +1,9 @@
-import { New } from "../../../domain/entities/New";
-import { User } from "../../../domain/entities/User";
 import { InMemoryCreateUserRepository } from "../../../tests/repositories/in-memory-create-user-repository";
 import { InMemoryCreateNewRepository } from "../../../tests/repositories/in-memory-create-new-repository";
+import { consoleResponse } from "../../../utils/consoleResponse";
+import { User } from "../../../domain/entities/User";
 import { CreateLikeInNew } from "./CreateLikeInNew";
+import { New } from "../../../domain/entities/New";
 
 describe("Use Case | Create Like New", () => {
     it("Should be able to create like in one new", async () => {
@@ -35,9 +36,10 @@ describe("Use Case | Create Like New", () => {
             userId: newUser.id,
         });
 
-        console.group("Create Like In New");
-        console.dir(response, { depth: null });
-        console.groupEnd();
+        consoleResponse({
+            text: "Create Like In New",
+            response,
+        });
 
         expect(response).toBeTruthy();
     });

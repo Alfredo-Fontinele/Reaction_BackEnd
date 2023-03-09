@@ -3,6 +3,7 @@ import { InMemoryCreateNewRepository } from "../../../tests/repositories/in-memo
 import { CreateNewUserStatistic } from "./CreateFavoriteNew";
 import { User } from "../../../domain/entities/User";
 import { New } from "../../../domain/entities/New";
+import { consoleResponse } from "../../../utils/consoleResponse";
 
 describe("Use Case | Create New User Statistic", () => {
     it("Should be able to create a news item and associate it with a user", async () => {
@@ -35,9 +36,10 @@ describe("Use Case | Create New User Statistic", () => {
             userId: newUser.id,
         });
 
-        console.group("Create Favorite New");
-        console.dir(response, { depth: null });
-        console.groupEnd();
+        consoleResponse({
+            text: "Create Favorite New",
+            response,
+        });
 
         expect(response).toBeTruthy();
     });
