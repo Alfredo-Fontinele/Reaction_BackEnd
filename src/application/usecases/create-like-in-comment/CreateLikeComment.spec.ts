@@ -1,17 +1,17 @@
-import { InMemoryCreateUserRepository } from "../../../tests/repositories/in-memory-create-user-repository";
-import { InMemoryCreateCommentRepository } from "../../../tests/repositories/in-memory-create-comment-repository";
+import { InMemoryUserRepository } from "../../../tests/repositories/in-memory-user-repository";
+import { InMemoryCommentRepository } from "../../../tests/repositories/in-memory-comment-repository";
+import { InMemoryNewRepository } from "../../../tests/repositories/in-memory-new-repository";
+import { consoleResponse } from "../../../utils/consoleResponse";
+import { Comment } from "../../../domain/entities/Comment";
 import { CreateLikeComment } from "./CreateLikeComment";
 import { User } from "../../../domain/entities/User";
-import { Comment } from "../../../domain/entities/Comment";
 import { New } from "../../../domain/entities/New";
-import { InMemoryCreateNewRepository } from "../../../tests/repositories/in-memory-create-new-repository";
-import { consoleResponse } from "../../../utils/consoleResponse";
 
 describe("Use Case | Create Like Comment", () => {
     it("Should be able to create like in one comment", async () => {
-        const userRepository = new InMemoryCreateUserRepository();
-        const commentRepository = new InMemoryCreateCommentRepository();
-        const newRepository = new InMemoryCreateNewRepository();
+        const userRepository = new InMemoryUserRepository();
+        const commentRepository = new InMemoryCommentRepository();
+        const newRepository = new InMemoryNewRepository();
 
         const createLikeComment = new CreateLikeComment(
             userRepository,

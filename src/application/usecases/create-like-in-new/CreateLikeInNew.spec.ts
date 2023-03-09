@@ -1,5 +1,5 @@
-import { InMemoryCreateUserRepository } from "../../../tests/repositories/in-memory-create-user-repository";
-import { InMemoryCreateNewRepository } from "../../../tests/repositories/in-memory-create-new-repository";
+import { InMemoryUserRepository } from "../../../tests/repositories/in-memory-user-repository";
+import { InMemoryNewRepository } from "../../../tests/repositories/in-memory-new-repository";
 import { consoleResponse } from "../../../utils/consoleResponse";
 import { User } from "../../../domain/entities/User";
 import { CreateLikeInNew } from "./CreateLikeInNew";
@@ -7,8 +7,8 @@ import { New } from "../../../domain/entities/New";
 
 describe("Use Case | Create Like New", () => {
     it("Should be able to create like in one new", async () => {
-        const userRepository = new InMemoryCreateUserRepository();
-        const newRepository = new InMemoryCreateNewRepository();
+        const userRepository = new InMemoryUserRepository();
+        const newRepository = new InMemoryNewRepository();
 
         const createLikeNew = new CreateLikeInNew(
             newRepository,

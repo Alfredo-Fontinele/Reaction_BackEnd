@@ -11,6 +11,8 @@ model User {
   id  String  @id   @default(uuid())
   name  String
   email  String @unique
+  description String
+  password  String
 
   @@map("users")
 }

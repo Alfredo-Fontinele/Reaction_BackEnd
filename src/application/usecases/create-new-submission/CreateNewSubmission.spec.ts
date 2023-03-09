@@ -1,5 +1,5 @@
-import { InMemoryCreateUserRepository } from "../../../tests/repositories/in-memory-create-user-repository";
-import { InMemoryCreateNewRepository } from "../../../tests/repositories/in-memory-create-new-repository";
+import { InMemoryUserRepository } from "../../../tests/repositories/in-memory-user-repository";
+import { InMemoryNewRepository } from "../../../tests/repositories/in-memory-new-repository";
 import { CreateNewSubmission } from "./CreateNewSubmission";
 import { User } from "../../../domain/entities/User";
 import { New } from "../../../domain/entities/New";
@@ -8,8 +8,8 @@ import { consoleResponse } from "../../../utils/consoleResponse";
 
 describe("Use Case | Create New Submission", () => {
     it("Should be able to create a new submission ", async () => {
-        const userRepositoryInMemory = new InMemoryCreateUserRepository();
-        const newRepositoryInMemory = new InMemoryCreateNewRepository();
+        const userRepositoryInMemory = new InMemoryUserRepository();
+        const newRepositoryInMemory = new InMemoryNewRepository();
 
         const createNewSubmission = new CreateNewSubmission(
             newRepositoryInMemory,

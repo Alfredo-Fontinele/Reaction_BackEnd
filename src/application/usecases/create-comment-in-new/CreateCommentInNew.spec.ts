@@ -1,15 +1,15 @@
-import { InMemoryCreateUserRepository } from "../../../tests/repositories/in-memory-create-user-repository";
-import { InMemoryCreateCommentRepository } from "../../../tests/repositories/in-memory-create-comment-repository";
+import { InMemoryCommentRepository } from "../../../tests/repositories/in-memory-comment-repository";
+import { InMemoryUserRepository } from "../../../tests/repositories/in-memory-user-repository";
+import { consoleResponse } from "../../../utils/consoleResponse";
+import { Comment } from "../../../domain/entities/Comment";
 import { CreateCommentInNew } from "./CreateCommentInNew";
 import { User } from "../../../domain/entities/User";
-import { Comment } from "../../../domain/entities/Comment";
 import { New } from "../../../domain/entities/New";
-import { consoleResponse } from "../../../utils/consoleResponse";
 
 describe("Use Case | Create User Comment", () => {
     it("Should be able to create user comment", async () => {
-        const userRepository = new InMemoryCreateUserRepository();
-        const commentRepository = new InMemoryCreateCommentRepository();
+        const userRepository = new InMemoryUserRepository();
+        const commentRepository = new InMemoryCommentRepository();
 
         const createCommentInNew = new CreateCommentInNew(
             userRepository,

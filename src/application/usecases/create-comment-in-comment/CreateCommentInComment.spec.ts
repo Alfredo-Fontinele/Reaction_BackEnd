@@ -1,5 +1,5 @@
-import { InMemoryCreateCommentRepository } from "../../../tests/repositories/in-memory-create-comment-repository";
-import { InMemoryCreateUserRepository } from "../../../tests/repositories/in-memory-create-user-repository";
+import { InMemoryCommentRepository } from "../../../tests/repositories/in-memory-comment-repository";
+import { InMemoryUserRepository } from "../../../tests/repositories/in-memory-user-repository";
 import { consoleResponse } from "./../../../utils/consoleResponse";
 import { CreateCommentInComment } from "./CreateCommentInComment";
 import { Comment } from "../../../domain/entities/Comment";
@@ -8,8 +8,8 @@ import { New } from "../../../domain/entities/New";
 
 describe("Use Case | Create Comment in Comment", () => {
     it("Should be able to create a comment in a comment", async () => {
-        const commentRepository = new InMemoryCreateCommentRepository();
-        const userRepository = new InMemoryCreateUserRepository();
+        const commentRepository = new InMemoryCommentRepository();
+        const userRepository = new InMemoryUserRepository();
 
         const createCommmentInComment = new CreateCommentInComment(
             commentRepository,

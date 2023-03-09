@@ -1,14 +1,14 @@
-import { InMemoryCreateUserRepository } from "../../../tests/repositories/in-memory-create-user-repository";
-import { InMemoryCreateNewRepository } from "../../../tests/repositories/in-memory-create-new-repository";
+import { InMemoryUserRepository } from "../../../tests/repositories/in-memory-user-repository";
+import { InMemoryNewRepository } from "../../../tests/repositories/in-memory-new-repository";
+import { consoleResponse } from "../../../utils/consoleResponse";
 import { CreateNewUserStatistic } from "./CreateFavoriteNew";
 import { User } from "../../../domain/entities/User";
 import { New } from "../../../domain/entities/New";
-import { consoleResponse } from "../../../utils/consoleResponse";
 
 describe("Use Case | Create New User Statistic", () => {
     it("Should be able to create a news item and associate it with a user", async () => {
-        const userRepository = new InMemoryCreateUserRepository();
-        const newRepository = new InMemoryCreateNewRepository();
+        const userRepository = new InMemoryUserRepository();
+        const newRepository = new InMemoryNewRepository();
 
         const createNewUserStatistic = new CreateNewUserStatistic(
             newRepository,
