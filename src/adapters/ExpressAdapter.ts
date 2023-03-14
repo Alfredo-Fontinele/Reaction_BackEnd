@@ -7,10 +7,4 @@ export class ExpressAdapter {
             return res.json(obj);
         };
     }
-    static getById(fn: Function) {
-        return async function (req: Request, res: Response) {
-            const obj = await fn(req.params);
-            return res.json(obj);
-        };
-    }
 }
